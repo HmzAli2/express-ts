@@ -1,7 +1,4 @@
-import { raw } from 'express'
 import fs from 'fs'
-
-import { appConfig } from '../config'
 
 // import { loadJsonFile } from 'load-json-file'  # TODO: not working. see terminal for error(s).
 
