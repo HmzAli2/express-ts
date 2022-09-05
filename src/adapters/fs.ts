@@ -1,8 +1,6 @@
 import fs from 'fs'
 
-// import { loadJsonFile } from 'load-json-file'  # TODO: not working. see terminal for error(s).
-
-export const loadJsonFile = async (filename: string): Promise<any> => {
+export const loadJson = async (filename: string): Promise<any> => { // TODO: returned value cannot be any!!
     const rawData = fs.readFileSync(filename, 'utf8')
     try {
         return JSON.parse(rawData)
