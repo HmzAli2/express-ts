@@ -7,7 +7,7 @@ const app = express()
 const port = 8080
 
 app.get('/', (request: Request, response: Response) => {
-    response.send('hia')
+    response.send('RCM test backend.')
 })
 
 app.post('/user', create)
