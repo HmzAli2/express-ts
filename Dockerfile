@@ -1,7 +1,9 @@
 FROM node:alpine3.16
 WORKDIR /app
-COPY package*.json .
-CMD npm install
+COPY package.json ./
+COPY tsconfig.json ./
+COPY src ./src
+RUN npm install
+EXPOSE 8080
 COPY . .
-CMD npx tsc && npm run serve
-
+CMD ["npm", "run", "dev"]
