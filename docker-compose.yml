@@ -1,6 +1,9 @@
-version: "3.8"
+version: '3.8'
+
 services:
   app:
+    depends_on:
+      - db
     container_name: rcm_app
     restart: always
     build:
@@ -8,6 +11,20 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     ports:
-      - 8080:8080
+      - $NODE_HOST_PORT:$NODE_DOCKER_PORT
     environment:
       - DB_PASSWORD="arangodb@rcm"
+
+  db:
+    image: arangodb:3.9
+    environment:
+      - ARANGO_ROOT_PASSWORD=$ARANGO_ROOT_PASSWORD
+    ports:
+      - $ARANGO_HOST_PORT:$ARANGO_DOCKER_PORT
+    volumes:
+      - arangodb_data_container:/var/lib/arangodb3
+      - arangodb_apps_data_container:/var/lib/arangodb3-apps
+
+volumes:
+  arangodb_data_container:
+  arangodb_apps_data_container:
