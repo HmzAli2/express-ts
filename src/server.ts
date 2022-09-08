@@ -1,6 +1,9 @@
 import express, { Application, Request, Response, NextFunction } from 'express'
+import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import { getAll, create } from './controllers/charge-master'
+
+dotenv.config()
 
 const app: Application = express()
 const port = 8080
