@@ -1,8 +1,6 @@
 import { Database, aql } from 'arangojs'
+import { appConfig } from '../config'
 
-
-console.log(process.env)
-
-// const db = new Database({
-//     url: 'http://localhost:8529'
-// });
+const db = new Database({
+    url: `http://localhost:${appConfig.dbConfig.port}`
+});

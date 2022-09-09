@@ -1,3 +1,12 @@
+interface DatabaseConfig {
+    host: string
+    port: string
+    name: string
+    username: string
+    password: string
+}
+
 export interface AppConfig {
-    storageFilePath: string
+    port: 8080,
+    dbConfig: DatabaseConfig
 }
