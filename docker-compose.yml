@@ -12,19 +12,18 @@ services:
     env_file: .env
     ports:
       - $NODE_HOST_PORT:$NODE_DOCKER_PORT
-    environment:
-      - DB_PASSWORD="arangodb@rcm"
+    volumes:
+      - ./src:/app/src
 
   db:
     image: arangodb:3.9
+    container_name: rcm_db
     environment:
       - ARANGO_ROOT_PASSWORD=$ARANGO_ROOT_PASSWORD
     ports:
       - $ARANGO_HOST_PORT:$ARANGO_DOCKER_PORT
     volumes:
       - arangodb_data_container:/var/lib/arangodb3
-      - arangodb_apps_data_container:/var/lib/arangodb3-apps
 
 volumes:
   arangodb_data_container:
-  arangodb_apps_data_container:
