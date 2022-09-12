@@ -1,7 +1,7 @@
 import 'dotenv/config'
-import { fail } from './adapters/logging'
+import { fail } from '../adapters/logging'
 import * as dotenv from 'dotenv'
-import { AppConfig } from './types/config'
+import { AppConfig } from '../types/config'
 
 export const appConfig = getConfig()
 

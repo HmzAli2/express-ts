@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { appConfig } from '../config'
+import { appConfig } from '../config/config'
 import { loadJson } from '../adapters/fs'
 import { ChargeCategory, ChargeMaster } from '../types/rcm'
 
