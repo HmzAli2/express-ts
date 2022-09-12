@@ -1,9 +1,6 @@
-import express, { Application, Request, Response, NextFunction } from 'express'
 import bodyParser from 'body-parser'
 import { appConfig } from './config'
-
-//test
-// config()
+import express, { Application, Request, Response, NextFunction } from 'express'
 
 const app: Application = express()
 

@@ -1,6 +1,6 @@
-import { Database, aql } from 'arangojs'
 import { appConfig } from '../config'
+import { Database, aql } from 'arangojs'
 
-const db = new Database({
-    url: `http://localhost:${appConfig.dbConfig.port}`
+export const db = new Database({
+    url: `${appConfig.dbConfig.host}`
 });
