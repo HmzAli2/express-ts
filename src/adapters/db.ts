@@ -1,6 +1,18 @@
-import { appConfig } from '../config/config'
-import { Database, aql } from 'arangojs'
+import { Database, aql } from "arangojs";
+import { appConfig } from "../config/config";
 
-export const db = new Database({
-    url: `${appConfig.dbConfig.host}`
+export let db: Database = new Database({
+  url: appConfig.dbConfig.host,
 });
+
+export const connect = () => {
+  db.useDatabase(appConfig.dbConfig.dbName);
+  db.useBasicAuth(appConfig.dbConfig.username, appConfig.dbConfig.password);
+};
+
+async function getRecord(collection: object) {
+  return await db.query(aql`
+        FOR code in ${collection}
+            RETURN d
+    `);
+}

@@ -1,44 +1,38 @@
-export const Info = (namespace: string, message: string, object?: any) => {
+export const Info = (namespace: number, message: string, object?: any) => {
   if (object) {
-    console.log(
-      `[${getTimeStamp()}] [INFO] [${namespace}] ${message}`,
-      object
-    );
+    console.log(`[${getTimeStamp()}] [INFO] ${message} [${namespace}]`, object);
   } else {
-    console.log(`[${getTimeStamp()}] [INFO] [${namespace}] ${message}`);
+    console.log(`[${getTimeStamp()}] [INFO] ${message} [${namespace}]`);
   }
 };
 
-export const Warn = (namespace: string, message: string, object?: any) => {
+export const Warn = (namespace: number, message: string, object?: any) => {
   if (object) {
-    console.log(
-      `[${getTimeStamp()}] [WARN] [${namespace}] ${message}`,
-      object
-    );
+    console.log(`[${getTimeStamp()}] [WARN] ${message} [${namespace}]`, object);
   } else {
-    console.log(`[${getTimeStamp()}] [WARN] [${namespace}] ${message}`);
+    console.log(`[${getTimeStamp()}] [WARN] ${message} [${namespace}]`);
   }
 };
 
-export const Error = (namespace: string, message: string, object?: any) => {
+export const Error = (namespace: number, message: string, object?: any) => {
   if (object) {
     console.log(
-      `[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`,
+      `[${getTimeStamp()}] [ERROR] ${message} [${namespace}]`,
       object
     );
   } else {
-    console.log(`[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`);
+    console.log(`[${getTimeStamp()}] [ERROR] ${message} [${namespace}]`);
   }
 };
 
-export const Debug = (namespace: string, message: string, object?: any) => {
+export const Debug = (namespace: number, message: string, object?: any) => {
   if (object) {
     console.log(
-      `[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`,
+      `[${getTimeStamp()}] [DEBUG] ${message} [${namespace}]`,
       object
     );
   } else {
-    console.log(`[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`);
+    console.log(`[${getTimeStamp()}] [DEBUG] ${message} [${namespace}]`);
   }
 };
 
