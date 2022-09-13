@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import { connect, db } from "./adapters/db";
 import { appConfig } from "./config/config";
+import { StatusCodes } from "http-status-codes";
 import { Info, Debug, Warn, Error } from "./config/logger";
 import express, { Application, Request, Response, NextFunction } from "express";
 
@@ -16,12 +17,15 @@ app.get("/", (request: Request, response: Response) => {
 });
 
 app.get("/chargeCodeSets", (request: Request, response: Response) => {
+	console.log('Database', db)
   const chargeCodeSetCollection = db.collection("rcm-charge-codeset");
   chargeCodeSetCollection.all().then((data) => {
     response.send(data);
+  }).catch((err) => {
+    Error(StatusCodes.INTERNAL_SERVER_ERROR, "Database error", err);
   });
 });
 
 app.listen(appConfig.port, () => {
-  console.info(`App running on port ${appConfig.port}`);
+  console.log(`App running on port ${appConfig.port}`);
 });

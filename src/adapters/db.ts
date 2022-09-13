@@ -10,7 +10,7 @@ export const connect = () => {
   db.useBasicAuth(appConfig.dbConfig.username, appConfig.dbConfig.password);
 };
 
-async function getRecord(collection: object) {
+export async function getRecord(collection: object) {
   return await db.query(aql`
       FOR code in ${collection} RETURN d
   `);
