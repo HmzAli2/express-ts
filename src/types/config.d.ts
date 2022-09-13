@@ -7,6 +7,6 @@ interface DatabaseConfig {
 }
 
 export interface AppConfig {
-    port: 8080,
+    port: string,
     dbConfig: DatabaseConfig
 }

@@ -1,6 +1,9 @@
-import bodyParser from 'body-parser'
-import { appConfig } from './config/config'
 import express, { Application, Request, Response, NextFunction } from 'express'
+import bodyParser from 'body-parser'
+import { appConfig } from './config'
+import { connect } from './adapters/db'
+
+connect()
 
 const app: Application = express()
 
