@@ -12,7 +12,6 @@ export const connect = () => {
 
 async function getRecord(collection: object) {
   return await db.query(aql`
-        FOR code in ${collection}
-            RETURN d
-    `);
+      FOR code in ${collection} RETURN d
+  `);
 }
