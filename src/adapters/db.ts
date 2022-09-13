@@ -2,12 +2,12 @@ import { appConfig } from "../config/config";
 import { Database, aql } from "arangojs";
 
 export const db = new Database({
-  url: `${appConfig.dbConfig.host}:${appConfig.dbConfig.port}`,
-  // databaseName: "rcm",
-  // auth: {
-  //   username: appConfig.dbConfig.username,
-  //   password: appConfig.dbConfig.password,
-  // },
+  url: `${appConfig.dbConfig.host}`,
+  databaseName: "rcm",
+  auth: {
+    username: appConfig.dbConfig.username,
+    password: appConfig.dbConfig.password,
+  },
 });
 
 connect();
@@ -17,6 +17,7 @@ export function connect() {
 }
 
 async function getRecord() {
+  const chargeCodeset = db.collection("rcm-charge-codeset")
   return db
     .query({
       query: "FOR p IN @@c RETURN p",

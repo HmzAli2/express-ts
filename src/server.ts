@@ -5,14 +5,13 @@ import { StatusCodes } from "http-status-codes";
 import { Info, Debug, Warn, Error } from "./config/logger";
 import express, { Application, Request, Response, NextFunction } from "express";
 
-connect();
-
 const app: Application = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (request: Request, response: Response) => {
+	connect();
   response.send("RCM server pinged");
 });
 
