@@ -1,17 +1,34 @@
-import { Database, aql } from "arangojs";
-import { appConfig } from "../config/config";
+import { appConfig } from '../config/config'
+import { Database, aql } from 'arangojs'
 
-export let db: Database = new Database({
-  url: appConfig.dbConfig.host,
+const db = new Database({
+    url: `${appConfig.dbConfig.host}:${appConfig.dbConfig.port}`,
+    databaseName: "rcm",
+    auth: {
+        username: appConfig.dbConfig.username,
+        password: appConfig.dbConfig.password
+    }
 });
 
-export const connect = () => {
-  db.useDatabase(appConfig.dbConfig.dbName);
-  db.useBasicAuth(appConfig.dbConfig.username, appConfig.dbConfig.password);
-};
+connect()
 
-async function getRecord(collection: object) {
-  return await db.query(aql`
-      FOR code in ${collection} RETURN d
-  `);
+export function connect() {
+    getRecord()
+        .then((v) => console.log(v))
+}
+
+async function getRecord() {
+    return db.query({
+        query: "FOR p IN @@c RETURN p",
+        bindVars: { "@c": "rcm-charge-codeset" },
+      })
+        .then(function (result: any) {
+          console.log("Charge code:");
+          return result.forEach(function (codeset: any) {
+            console.log(codeset);
+          });
+        })
+        .catch(function (err: any) {
+          console.error(err);
+        });
 }
