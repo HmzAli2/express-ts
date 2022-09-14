@@ -9,6 +9,7 @@
       "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended"
     ],
+    // Enforced code style
     "rules": {
         "semi": ["error", "always"],
         "quotes": [ "error", "single"],
