@@ -21,7 +21,7 @@ async function getRecord() {
   return db
     .query({
       query: "FOR p IN @@c RETURN p",
-      bindVars: { "@c": "rcm-charge-codeset" },
+      bindVars: { "@c": "rcm-charge-codeset" }
     })
     .then(function (result: any) {
       console.log("Charge code:");
