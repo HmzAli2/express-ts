@@ -20,13 +20,8 @@ async function getRecord() {
   const chargeCodeset = db.collection('rcm-charge-codeset');
   return db
     .query({
-<<<<<<< HEAD
-      query: "FOR p IN @@c RETURN p",
-      bindVars: { "@c": "rcm-charge-codeset" }
-=======
       query: 'FOR p IN @@c RETURN p',
       bindVars: { '@c': 'rcm-charge-codeset' },
->>>>>>> 57e0903b1bf99b55fdaa465147c13f89f1306d17
     })
     .then(function (result: any) {
       console.log('Charge code:');
