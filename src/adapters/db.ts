@@ -1,9 +1,9 @@
-import { appConfig } from '../config/config';
-import { Database, aql } from 'arangojs';
+import { appConfig } from "../config/db.config";
+import { Database, aql } from "arangojs";
 
 export const db = new Database({
   url: `${appConfig.dbConfig.host}`,
-  databaseName: 'rcm',
+  databaseName: "rcm",
   auth: {
     username: appConfig.dbConfig.username,
     password: appConfig.dbConfig.password,
@@ -17,14 +17,14 @@ export function connect() {
 }
 
 async function getRecord() {
-  const chargeCodeset = db.collection('rcm-charge-codeset');
+  const chargeCodeset = db.collection("rcm-charge-codeset");
   return db
     .query({
-      query: 'FOR p IN @@c RETURN p',
-      bindVars: { '@c': 'rcm-charge-codeset' },
+      query: "FOR p IN @@c RETURN p",
+      bindVars: { "@c": "rcm-charge-codeset" },
     })
     .then(function (result: any) {
-      console.log('Charge code:');
+      console.log("Charge code:");
       return result.forEach(function (codeset: any) {
         console.log(codeset);
       });
