@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import { connect, db } from "./adapters/db";
-import { appConfig } from "./config/db.config";
+import { appConfig } from "./config/config";
 import { StatusCodes } from "http-status-codes";
 import { Info, Debug, Warn, Error } from "./utils/logger";
 import express, { Application, Request, Response, NextFunction } from "express";

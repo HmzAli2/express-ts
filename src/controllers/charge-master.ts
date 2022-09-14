@@ -1,12 +1,15 @@
-import { Request, Response } from "express";
-import { appConfig } from "../config/db.config";
-import { loadJson } from "../adapters/fs";
-import { ChargeCategory, ChargeMaster } from "../types/rcm";
+import { Request, Response } from 'express';
+import { appConfig } from '../config/db.config';
+import { loadJson } from '../adapters/fs';
+import { ChargeMaster } from '../types/db.rcm';
+import { db } from '../adapters/db';
 
-export const create = (request: Request, response: Response) => {
-  let chargeMaster: ChargeMaster;
-};
+export const getAll = async (req: Request, res: Response) => {
+  const chargeMaster = await db
+    .query({
+      query: 'FOR p IN @@c RETURN p',
+      bindVars: { '@c': 'rcm-charge-codeset' },
+    });
 
-export const getAll = async (request: Request, response: Response) => {
-  let chargeMaster: ChargeMaster;
+  return chargeMaster;
 };
