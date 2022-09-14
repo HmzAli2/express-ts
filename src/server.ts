@@ -11,12 +11,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (request: Request, response: Response) => {
-	connect();
+  connect();
   response.send('RCM server pinged');
 });
 
 app.get('/chargeCodeSets', (request: Request, response: Response) => {
-	console.log('Database', db);
+  console.log('Database', db);
   const chargeCodeSetCollection = db.collection('rcm-charge-codeset');
   chargeCodeSetCollection.all().then((data: any) => {
     response.send(data);
