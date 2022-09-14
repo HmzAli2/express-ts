@@ -17,7 +17,7 @@ export function connect() {
 }
 
 async function getRecord() {
-  const chargeCodeset = db.collection("rcm-charge-codeset")
+  const chargeCodeset = db.collection("rcm-charge-codeset");
   return db
     .query({
       query: "FOR p IN @@c RETURN p",

@@ -16,7 +16,7 @@ app.get("/", (request: Request, response: Response) => {
 });
 
 app.get("/chargeCodeSets", (request: Request, response: Response) => {
-	console.log('Database', db)
+	console.log('Database', db);
   const chargeCodeSetCollection = db.collection("rcm-charge-codeset");
   chargeCodeSetCollection.all().then((data: any) => {
     response.send(data);
