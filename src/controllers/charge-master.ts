@@ -1,10 +1,8 @@
-import { Request, Response } from 'express';
-import { appConfig } from '../config/db.config';
-import { loadJson } from '../adapters/fs';
-import { ChargeMaster } from '../types/db.rcm';
 import { db } from '../adapters/db';
+import { loadJson } from '../adapters/fs';
+import { ChargeMaster } from '../models/db.rcm';
 
-export const getAll = async (req: Request, res: Response) => {
+export const getAll = async () => {
   const chargeMaster = await db
     .query({
       query: 'FOR p IN @@c RETURN p',
